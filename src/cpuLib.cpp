@@ -60,7 +60,7 @@ int runCpuSaxpy(uint64_t vectorSize) {
 	uint64_t vectorBytes = vectorSize * sizeof(float);
 
 	printf("Hello Saxpy!\n");
-
+	// std::cout<<vectorSize<<std::endl;
 	float * a, * b, * c;
 
 	a = (float *) malloc(vectorSize * sizeof(float));
@@ -121,7 +121,7 @@ int runCpuMCPi(uint64_t iterationCount, uint64_t sampleSize) {
 
 	std::random_device random_device;
 	std::uniform_real_distribution<float> dist(0.0, 1.0);
-
+	std::cout<<"sample size = "<<sampleSize<<std::endl;
 	float x, y;
 	uint64_t hitCount = 0;
 	uint64_t totalHitCount = 0;
@@ -132,7 +132,7 @@ int runCpuMCPi(uint64_t iterationCount, uint64_t sampleSize) {
 	#ifndef DEBUG_PRINT_DISABLE
 		std::cout << "Iteration: ";
 	#endif
-
+	iterationCount = 1;
 	for (int iter = 0; iter < iterationCount; ++ iter) {
 		hitCount = 0;
 
@@ -146,7 +146,7 @@ int runCpuMCPi(uint64_t iterationCount, uint64_t sampleSize) {
 			x = dist(random_device);
 			y = dist(random_device);
 			
-			if ( int(x * x + y * y) == 0 ) {
+			if ( int(x * x + y * y) <= 0 ) {
 				++ hitCount;
 			}
 		}
