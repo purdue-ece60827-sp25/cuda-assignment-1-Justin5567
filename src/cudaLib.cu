@@ -154,7 +154,7 @@ double estimatePi(uint64_t generateThreadCount, uint64_t sampleSize,
 	unsigned long* host_hitCount;
 	host_hitCount = (unsigned long*) calloc(generateThreadCount, sizeof(unsigned long));
 	unsigned long* device_hitCount;
-	int threadsPerBlock = 64; 
+	int threadsPerBlock = 128; 
 	int blocksPerGrid = (generateThreadCount + threadsPerBlock - 1) / threadsPerBlock;
 
 	int pSumSize = sampleSize / generateThreadCount;
